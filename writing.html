@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bina Kids - Luyện chữ đẹp</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    canvas {
+      border: 2px solid #333;
+      background: #fff;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    .tools {
+      margin: 15px;
+    }
+    .tools button {
+      margin: 5px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background: #ffca28;
+      border: none;
+      cursor: pointer;
+    }
+    .tools button:hover {
+      background: #ffa000;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>✍️ Luyện chữ đẹp ✍️</h1>
+    <p>Tập viết chữ cái và luyện nét cơ bản</p>
+  </header>
+
+  <!-- Vùng tập viết -->
+  <section>
+    <div class="tools">
+      <button onclick="clearCanvas()">Xóa hết</button>
+      <button onclick="changeColor('black')">Màu đen</button>
+      <button onclick="changeColor('blue')">Màu xanh</button>
+      <button onclick="changeColor('red')">Màu đỏ</button>
+    </div>
+    <canvas id="drawCanvas" width="600" height="400"></canvas>
+  </section>
+
+  <!-- Video hướng dẫn -->
+  <section>
+    <h2>📺 Video hướng dẫn viết chữ</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/zx1XHd0zN84" 
+      title="Video luyện chữ đẹp" frameborder="0" allowfullscreen></iframe>
+  </section>
+
+  <footer>
+    <p><a href="index.html">⬅️ Quay lại trang chính</a></p>
+  </footer>
+
+  <script>
+    let canvas = document.getElementById("drawCanvas");
+    let ctx = canvas.getContext("2d");
+    let drawing = false;
+    let penColor = "black";
+
+    canvas.addEventListener("mousedown", startDraw);
+    canvas.addEventListener("mouseup", endDraw);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("touchstart", startDraw);
+    canvas.addEventListener("touchend", endDraw);
+    canvas.addEventListener("touchmove", drawTouch);
+
+    function startDraw(e) {
+      drawing = true;
+      ctx.beginPath();
+      ctx.moveTo(getX(e), getY(e));
+    }
+
+    function endDraw() {
+      drawing = false;
+    }
+
+    function draw(e) {
+      if (!drawing) return;
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = penColor;
+      ctx.lineTo(getX(e), getY(e));
+      ctx.stroke();
+    }
+
+    function drawTouch(e) {
+      e.preventDefault();
+      if (!drawing) return;
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = penColor;
+      ctx.lineTo(getX(e.touches[0]), getY(e.touches[0]));
+      ctx.stroke();
+    }
+
+    function getX(e) {
+      return e.clientX - canvas.offsetLeft;
+    }
+    function getY(e) {
+      return e.clientY - canvas.offsetTop;
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function changeColor(color) {
+      penColor = color;
+    }
+  </script>
+</body>
+</html>
