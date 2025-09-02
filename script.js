@@ -50,7 +50,10 @@ function openGift() {
 }
 
 // Luyện chữ đẹp
+function goToWriting() {// Luyện chữ đẹp -> mở trang riêng
 function goToWriting() {
+  window.location.href = "writing.html";
+}
   window.open("https://www.youtube.com/results?search_query=luyện+chữ+đẹp+cho+trẻ+em", "_blank");
 }
 
