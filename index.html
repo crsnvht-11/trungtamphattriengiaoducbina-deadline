@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bina Kids - Trung Tâm Phát Triển Giáo Dục</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🌟 Trung Tâm Phát Triển Giáo Dục Bina Kids 🌟</h1>
+    <p>Nơi ươm mầm tri thức và niềm vui cho trẻ em</p>
+  </header>
+
+  <!-- Chương trình học -->
+  <section class="intro">
+    <h2>🌈 Chương Trình Học</h2>
+    <div class="programs">
+      <div class="card" onclick="showQuiz()">🧮 Toán tư duy</div>
+      <div class="card" onclick="goToWriting()">✍️ Luyện chữ đẹp</div>
+      <div class="card" onclick="goToPronunciation()">🗣️ Phát âm chuẩn</div>
+      <div class="card" onclick="showPrep()">📘 Hành trang vào lớp 1</div>
+    </div>
+  </section>
+
+  <!-- Khu vực trò chơi toán -->
+  <section class="quiz hidden" id="quiz">
+    <h2>🎲 Trò chơi toán vui 🎲</h2>
+    <p id="question"></p>
+    <input type="text" id="answer" placeholder="Nhập đáp án...">
+    <button onclick="checkAnswer()">Trả lời</button>
+    <div id="result"></div>
+  </section>
+
+  <!-- Món quà -->
+  <div id="giftBox" class="hidden">
+    <div class="gift" onclick="openGift()">🎁</div>
+  </div>
+
+  <!-- Hiệu ứng quà -->
+  <div id="surprise" class="hidden"></div>
+
+  <footer>
+    <p>© 2025 Trung Tâm Phát Triển Giáo Dục Bina Kids</p>
+  </footer>
+
+  <!-- Âm thanh -->
+  <audio id="soundCorrect" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+  <audio id="soundWrong" src="https://www.fesliyanstudios.com/play-mp3/6671" preload="auto"></audio>
+  <audio id="songCandy" src="https://www.nhaccuatui.com/mh/auto/4a7rNfYw4D" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
